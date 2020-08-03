@@ -12,6 +12,19 @@ public class Jar {
      	int smallVol = scan.nextInt();
      	System.out.print("Enter the needed water volume: ");
      	int needed = scan.nextInt();
+     	if (bigVol < smallVol){
+     		int c = bigVol;
+     		bigVol = smallVol;
+     		smallVol = c;
+     	}
+     	if (bigVol <= 0 || smallVol <= 0 || needed <= 0){
+     		System.out.println("The jars' volumes and needed water should be positive numbers");
+     		return;
+     	}
+     	if (bigVol % smallVol == 0 && needed % smallVol != 0 ){
+     		System.out.println("The task hasn't solution!");
+     		return;
+     	}
      	if (needed == bigVol){
      		System.out.println("Fill " + bigVol + "l: (" + bigVol + "l = " + bigVol + ", " + smallVol + "l = 0) ");
 		System.out.println("Great job!!!!!");
@@ -21,11 +34,6 @@ public class Jar {
      		System.out.println("Fill " + smallVol + "l: (" + bigVol + "l = 0, " + smallVol + "l = " + smallVol + ") ");
 		System.out.println("Great job!!!!!");
 		return;
-     	}
-     	if (bigVol < smallVol){
-     		int c = bigVol;
-     		bigVol = smallVol;
-     		smallVol = c;
      	}
      	int max = 0; // water in the big jar
      	int min = 0; // water in the small jar
